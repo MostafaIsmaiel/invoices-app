@@ -1,0 +1,1092 @@
+@import url("https://fonts.googleapis.com/css2?family=Spartan:wght@100;200;300;400;500;600;700;800;900&display=swap");
+:root {
+  --background-color: #141625;
+  --items-background-color: #232c43;
+  --font-color: #eae3dc;
+  --sec-font-color: hsla(0, 0%, 100%, .6);
+  --btn-bgColor: #7c5dfa;
+  --btn-bgHover: brightness(1.1);
+  --overLayBg: rgba(20, 22, 37, .95);
+  --draft-BgColor: #3B3F58;
+  --draft-color: #eae3dc;
+  --pending-BgColor: rgba(236, 141, 34, .1);
+  --pending-color: #ec8d22;
+  --paid-BgColor: rgba(105, 214, 159, .1);
+  --paid-color: #69d69f;
+  --errorColor: #E85757;
+  --btn-color: #eae3dc;
+  --transition: all 0.2s ease-in-out;
+  --box-shadow: 5px 0px 15px 0px rgb(0, 0, 0, 0.3);
+  --border-radius: 5px;
+  --btn-border-radius: 25px;
+  --input-radius: 5px;
+  --main-padding: 6rem 0;
+  --padding-bottom: 2rem;
+  --margin-bottom: 1.5rem;
+  --btn-padding: 0.75rem 1rem;
+  --main-header-width: 80px;
+  --small-header-width: 60px;
+  --border-bottom: 1px solid hsla(0, 0%, 100%, .06);
+  --font-size-lg: 24px;
+  --font-size-md: 13px;
+  --font-size-sm: 11px;
+}
+
+body.light {
+  --background-color: #d6d7db;
+  --items-background-color: #f7f6f9;
+  --font-color: #1a1a1a;
+  --sec-font-color: #1a1a1ace;
+  --btn-bgColor: hsl(25, 98%, 40%);
+  --overLayBg: hsla(0, 5%, 81%, 0.9);
+  --draft-BgColor: #D6D7DB;
+  --draft-color: #1a1a1a;
+}
+
+* {
+  transition: background-color 0.2s ease-in-out;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: var(--background-color);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #dddddd;
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #999999;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.main-container {
+  font-family: "Spartan", sans-serif;
+  background-color: var(--background-color);
+  width: 100%;
+  min-height: 100vh;
+}
+.main-container .aside {
+  height: 100vh;
+  width: var(--main-header-width);
+  background-color: var(--items-background-color);
+  border-top-right-radius: 14px;
+  border-bottom-right-radius: 14px;
+  position: fixed;
+  z-index: 200;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+.main-container .aside .logo,
+.main-container .aside .setting {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.main-container .aside .logo a img {
+  width: var(--main-header-width);
+}
+.main-container .aside .setting .theme {
+  width: var(--main-header-width);
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--sec-font-color);
+}
+.main-container .aside .setting .theme .toggle-theme {
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+  font-size: var(--font-size-lg);
+  color: var(--font-color);
+  transition: var(--transition);
+}
+.main-container .aside .setting .theme .toggle-theme:hover {
+  color: var(--sec-font-color);
+}
+.main-container .aside .setting .user {
+  padding: 1rem 0;
+}
+.main-container .aside .setting .user a svg {
+  font-size: var(--font-size-lg);
+  color: var(--font-color);
+}
+@media (max-width: 990px) {
+  .main-container .aside {
+    height: var(--small-header-width);
+    width: 100%;
+    flex-direction: row;
+    border-top-right-radius: unset;
+    border-bottom-right-radius: 14px;
+    border-bottom-left-radius: 14px;
+  }
+  .main-container .aside .logo {
+    height: 100%;
+    width: var(--small-header-width);
+  }
+  .main-container .aside .logo a img {
+    transform: rotate(90deg);
+    width: var(--small-header-width);
+  }
+  .main-container .aside .setting {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    padding-right: var(--padding-bottom);
+  }
+  .main-container .aside .setting .theme {
+    border: none;
+    display: flex;
+    justify-self: center;
+  }
+}
+.main-container .app-container {
+  width: 100%;
+  padding: var(--main-padding);
+}
+.main-container .app-container .page .invoice-hint {
+  height: 30vh;
+  padding: var(--padding-bottom);
+  margin-top: var(--padding-bottom);
+  background-color: var(--items-background-color);
+  border-radius: var(--btn-border-radius);
+}
+.main-container .app-container .page .invoice-hint .add-newInvoice {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  color: var(--font-color);
+  text-transform: capitalize;
+  font-size: var(--font-size-lg);
+  line-height: var(--font-size-lg);
+  cursor: pointer;
+  transition: var(--transition);
+}
+.main-container .app-container .page .invoice-hint .add-newInvoice:hover {
+  filter: drop-shadow(10px 10px 10px var(--background-color));
+}
+.main-container .app-container .page .invoice-hint .add-newInvoice svg {
+  font-size: calc(var(--font-size-lg) + .75rem);
+}
+.main-container .app-container .page .invoice-hint .add-newInvoice h1 {
+  font-weight: bolder;
+  margin: 0;
+}
+@media (max-width: 992px) {
+  .main-container .app-container .page .invoice-hint {
+    padding: var(--btn-padding);
+  }
+  .main-container .app-container .page .invoice-hint .add-newInvoice {
+    flex-direction: column;
+    text-align: center;
+  }
+  .main-container .app-container .page .invoice-hint .add-newInvoice h1 {
+    font-size: var(--font-size-lg);
+  }
+  .main-container .app-container .page .invoice-hint .add-newInvoice svg {
+    font-size: var(--font-size-lg);
+  }
+}
+@media (max-width: 768px) {
+  .main-container .app-container .page .invoice-hint {
+    padding: var(--btn-padding);
+  }
+  .main-container .app-container .page .invoice-hint .add-newInvoice {
+    flex-direction: column;
+    text-align: center;
+  }
+  .main-container .app-container .page .invoice-hint .add-newInvoice h1 {
+    font-size: var(--font-size-md);
+  }
+  .main-container .app-container .page .invoice-hint .add-newInvoice svg {
+    font-size: var(--font-size-lg);
+  }
+}
+.main-container .app-container .page .header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--font-color);
+  padding-bottom: var(--padding-bottom);
+}
+.main-container .app-container .page .header .invoices-counter h2 {
+  font-weight: bold;
+}
+.main-container .app-container .page .header .invoices-counter span {
+  color: var(--sec-font-color);
+  font-size: var(--font-size-md);
+}
+.main-container .app-container .page .header .filter {
+  margin-right: 20px;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+.main-container .app-container .page .header .filter .filter-btn {
+  font-size: var(--font-size-md);
+  color: var(--font-color);
+  margin: 0 10px 0 0;
+  transition: var(--transition);
+  background-color: transparent;
+  border: none;
+}
+.main-container .app-container .page .header .filter .filter-btn:hover {
+  color: var(--sec-font-color);
+}
+.main-container .app-container .page .header .filter svg {
+  color: var(--btn-bgColor);
+  transition: var(--transition);
+  font-size: var(--font-size-lg);
+}
+.main-container .app-container .page .header .filter svg.active {
+  transform: rotate(180deg);
+}
+.main-container .app-container .page .header .filter .filter-list {
+  display: none;
+  width: 120%;
+  list-style: none;
+  position: absolute;
+  top: 30px;
+  left: 0;
+  z-index: 99;
+  padding: 1rem 2.5rem;
+  background-color: var(--items-background-color);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  animation: filterAnimation 0.5s ease-in-out 1;
+}
+.main-container .app-container .page .header .filter .filter-list li {
+  margin-bottom: 10px;
+}
+.main-container .app-container .page .header .filter .filter-list li:last-of-type {
+  margin-bottom: 0;
+}
+.main-container .app-container .page .header .filter .filter-list li input {
+  display: none;
+}
+.main-container .app-container .page .header .filter .filter-list li input:checked + label::before {
+  background-color: var(--btn-bgColor);
+}
+.main-container .app-container .page .header .filter .filter-list li label {
+  position: relative;
+  cursor: pointer;
+  transition: var(--transition);
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.main-container .app-container .page .header .filter .filter-list li label::before, .main-container .app-container .page .header .filter .filter-list li label::after {
+  content: "";
+  height: 15px;
+  width: 15px;
+  position: absolute;
+  left: -25px;
+  border-radius: 3px;
+  transition: var(--transition);
+}
+.main-container .app-container .page .header .filter .filter-list li label::before {
+  background-color: var(--background-color);
+}
+.main-container .app-container .page .header .filter .filter-list li label::after {
+  border: 2px solid var(--btn-bgColor);
+  opacity: 0;
+}
+.main-container .app-container .page .header .filter .filter-list li label:hover::after {
+  opacity: 1;
+}
+.main-container .app-container .page .header .filter .filter-list.active {
+  display: block;
+}
+@keyframes filterAnimation {
+  from {
+    top: 40px;
+    opacity: 0;
+  }
+  to {
+    top: 30px;
+    opacity: 1;
+  }
+}
+.main-container .app-container .page .header .invoice-actions {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+.main-container .app-container .page .header .invoice-actions .add-invoice {
+  padding: var(--btn-padding);
+  border: none;
+  border-radius: var(--btn-border-radius);
+  background-color: var(--btn-bgColor);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition);
+}
+.main-container .app-container .page .header .invoice-actions .add-invoice:hover {
+  filter: var(--btn-bgHover);
+}
+.main-container .app-container .page .header .invoice-actions .add-invoice img {
+  width: 25px;
+  margin-right: 10px;
+}
+.main-container .app-container .page .header .invoice-actions .add-invoice h6 {
+  color: var(--btn-color);
+  margin: 0;
+  font-weight: bold;
+}
+.main-container .app-container .page .invoices-container .invoice {
+  width: 100%;
+  padding: 20px;
+  margin-bottom: 20px;
+  background-color: var(--items-background-color);
+  border-radius: var(--border-radius);
+  transition: var(--transition);
+  position: relative;
+  z-index: 9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: var(--font-color);
+  font-size: var(--font-size-md);
+}
+.main-container .app-container .page .invoices-container .invoice::after {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0%;
+  border-radius: var(--border-radius);
+  border: 2px solid var(--btn-bgColor);
+  opacity: 0;
+  transition: var(--transition);
+}
+.main-container .app-container .page .invoices-container .invoice:hover::after {
+  opacity: 1;
+}
+.main-container .app-container .page .invoices-container .invoice .id {
+  margin-right: 10px;
+}
+.main-container .app-container .page .invoices-container .invoice .invoice-info,
+.main-container .app-container .page .invoices-container .invoice .invoice-status {
+  display: grid;
+  align-items: center;
+  gap: 10px;
+  height: 100%;
+}
+.main-container .app-container .page .invoices-container .invoice .invoice-info {
+  grid-template-columns: repeat(3, 1fr);
+}
+.main-container .app-container .page .invoices-container .invoice .invoice-info .due-date,
+.main-container .app-container .page .invoices-container .invoice .invoice-info .name {
+  margin-bottom: 0;
+}
+.main-container .app-container .page .invoices-container .invoice .invoice-info .due-date {
+  color: var(--sec-font-color);
+}
+.main-container .app-container .page .invoices-container .invoice .invoice-info .id span {
+  color: var(--btn-bgColor);
+}
+.main-container .app-container .page .invoices-container .invoice .invoice-status {
+  grid-template-columns: repeat(2, 1fr);
+}
+.main-container .app-container .page .invoices-container .invoice .invoice-status .status-container {
+  display: flex;
+  align-items: center;
+}
+.main-container .app-container .page .invoices-container .invoice .invoice-status .status-container .status {
+  width: 110px;
+  height: 40px;
+  margin-right: 20px;
+  margin-bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--border-radius);
+  position: relative;
+  font-weight: bold;
+}
+.main-container .app-container .page .invoices-container .invoice .invoice-status .status-container .status::before {
+  content: "";
+  height: 6px;
+  width: 6px;
+  position: absolute;
+  left: 12px;
+  border-radius: 50%;
+}
+.main-container .app-container .page .invoices-container .invoice .invoice-status .status-container .draft {
+  color: var(--draft-color);
+  background: var(--draft-BgColor);
+}
+.main-container .app-container .page .invoices-container .invoice .invoice-status .status-container .draft::before {
+  background-color: var(--draft-color);
+}
+.main-container .app-container .page .invoices-container .invoice .invoice-status .status-container .pending {
+  color: var(--pending-color);
+  background-color: var(--pending-BgColor);
+}
+.main-container .app-container .page .invoices-container .invoice .invoice-status .status-container .pending::before {
+  background-color: var(--pending-color);
+}
+.main-container .app-container .page .invoices-container .invoice .invoice-status .status-container .paid {
+  color: var(--paid-color);
+  background: var(--paid-BgColor);
+}
+.main-container .app-container .page .invoices-container .invoice .invoice-status .status-container .paid::before {
+  background-color: var(--paid-color);
+}
+.main-container .app-container .page .invoices-container .invoice .invoice-status svg {
+  color: var(--btn-bgColor);
+  font-size: var(--font-size-lg);
+}
+@media (max-width: 768px) {
+  .main-container .app-container .page .header {
+    padding-bottom: 0;
+    flex-direction: column;
+  }
+  .main-container .app-container .page .header .invoices-counter {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  .main-container .app-container .page .header .invoices-counter span {
+    font-size: var(--font-size-sm);
+  }
+  .main-container .app-container .page .filter {
+    margin-right: 10px;
+    font-size: var(--font-size-md);
+  }
+  .main-container .app-container .page .add-invoice {
+    padding: 0.5rem !important;
+  }
+  .main-container .app-container .page .add-invoice h6 {
+    font-size: var(--font-size-sm);
+  }
+  .main-container .app-container .page .invoices-container .invoice .invoice-info,
+.main-container .app-container .page .invoices-container .invoice .invoice-status {
+    font-size: var(--font-size-sm);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .main-container .app-container .page .invoices-container .invoice .invoice-info {
+    padding: 10px 0;
+  }
+  .main-container .app-container .page .invoices-container .invoice .invoice-status .invoice-cost {
+    margin-right: 10px;
+  }
+  .main-container .app-container .page .invoices-container .invoice .invoice-status .status-container .status {
+    margin-right: 5px;
+    width: 70px;
+    padding-left: 10px;
+  }
+  .main-container .app-container .page .invoices-container .invoice .invoice-status .status-container .status::before {
+    left: 8px;
+  }
+}
+.main-container .addInvoice-container {
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  background-color: var(--overLayBg);
+  overflow-y: auto;
+}
+.main-container .addInvoice-container .addNewInvoice {
+  padding: var(--main-padding);
+  text-transform: capitalize;
+}
+.main-container .addInvoice-container .addNewInvoice .addInvoices-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: var(--padding-bottom);
+}
+.main-container .addInvoice-container .addNewInvoice .addInvoices-header .heading {
+  color: var(--font-color);
+  font-weight: bold;
+}
+.main-container .addInvoice-container .addNewInvoice .addInvoices-header .close-btn {
+  border: none;
+  background-color: transparent;
+}
+.main-container .addInvoice-container .addNewInvoice .addInvoices-header .close-btn svg {
+  width: 35px;
+  height: 35px;
+  color: var(--errorColor);
+  transition: var(--transition);
+}
+.main-container .addInvoice-container .addNewInvoice .addInvoices-header .close-btn svg:hover {
+  filter: var(--btn-bgHover);
+}
+.main-container .addInvoice-container .addNewInvoice .form .form-section .form-headers {
+  font-size: 18px;
+  font-weight: bold;
+  color: var(--btn-bgColor);
+  margin-bottom: var(--margin-bottom);
+}
+.main-container .addInvoice-container .addNewInvoice .form .form-section .form-control {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  background-color: transparent;
+  border: none;
+  position: relative;
+}
+.main-container .addInvoice-container .addNewInvoice .form .form-section .form-control label {
+  color: var(--font-color);
+  margin: 0.5rem 0;
+  font-size: var(--font-size-md);
+  font-weight: 500;
+}
+.main-container .addInvoice-container .addNewInvoice .form .form-section .form-control .input,
+.main-container .addInvoice-container .addNewInvoice .form .form-section .form-control .select {
+  position: relative;
+  width: 100%;
+  padding: 0.6rem 1rem;
+  background-color: var(--items-background-color);
+  border: none;
+  border-radius: var(--input-radius);
+  outline: none;
+  caret-color: var(--font-color);
+  color: var(--sec-font-color);
+}
+.main-container .addInvoice-container .addNewInvoice .form .form-section .form-control .input .calendar-icon,
+.main-container .addInvoice-container .addNewInvoice .form .form-section .form-control .select .calendar-icon {
+  font-size: var(--font-size-lg);
+  color: var(--btn-bgColor);
+  position: absolute;
+  top: 50%;
+  right: 1rem;
+  transform: translateY(-50%);
+}
+.main-container .addInvoice-container .addNewInvoice .form .form-section .form-control .select {
+  color: var(--font-color);
+  text-transform: capitalize;
+}
+.main-container .addInvoice-container .addNewInvoice .form .form-section .form-control .total {
+  color: var(--font-color);
+  margin-bottom: 0;
+  padding: 0.6rem 0;
+}
+.main-container .addInvoice-container .addNewInvoice .form .form-section .form-control .remove-btn {
+  border: none;
+  background-color: transparent;
+  color: var(--errorColor);
+  font-size: var(--font-size-lg);
+  transition: var(--transition);
+}
+.main-container .addInvoice-container .addNewInvoice .form .form-section .form-control .remove-btn:hover {
+  filter: var(--btn-bgHover);
+}
+.main-container .addInvoice-container .addNewInvoice .form .form-section .form-control .err-message {
+  color: var(--errorColor);
+  font-size: var(--font-size-sm);
+  position: absolute;
+  top: 98%;
+}
+.main-container .addInvoice-container .addNewInvoice .form .bill-to {
+  margin: var(--main-padding);
+}
+.main-container .addInvoice-container .addNewInvoice .form .bill-to .react-date-picker__wrapper {
+  border: none;
+}
+.main-container .addInvoice-container .addNewInvoice .form .bill-to .react-date-picker__wrapper .react-date-picker__inputGroup {
+  padding: 0;
+}
+.main-container .addInvoice-container .addNewInvoice .form .bill-to .react-date-picker__wrapper .react-date-picker__inputGroup input,
+.main-container .addInvoice-container .addNewInvoice .form .bill-to .react-date-picker__wrapper .react-date-picker__inputGroup span {
+  color: var(--font-color);
+  outline: none;
+}
+.main-container .addInvoice-container .addNewInvoice .form .bill-to .react-date-picker__calendar .react-calendar {
+  color: var(--font-color);
+  background-color: var(--items-background-color);
+  border: none;
+  box-shadow: var(--box-shadow);
+  border-radius: var(--input-radius);
+}
+.main-container .addInvoice-container .addNewInvoice .form .bill-to .react-date-picker__calendar .react-calendar .react-calendar__navigation button {
+  color: var(--font-color);
+  transition: var(--transition);
+}
+.main-container .addInvoice-container .addNewInvoice .form .bill-to .react-date-picker__calendar .react-calendar .react-calendar__navigation button:hover {
+  background-color: var(--background-color);
+}
+.main-container .addInvoice-container .addNewInvoice .form .bill-to .react-date-picker__calendar .react-calendar .react-calendar__viewContainer .react-calendar__month-view .react-calendar__month-view__weekdays .react-calendar__month-view__weekdays__weekday abbr {
+  text-decoration: none;
+}
+.main-container .addInvoice-container .addNewInvoice .form .bill-to .react-date-picker__calendar .react-calendar .react-calendar__viewContainer .react-calendar__month-view .react-calendar__tile--now {
+  background-color: var(--sec-font-color);
+}
+.main-container .addInvoice-container .addNewInvoice .form .bill-to .react-date-picker__calendar .react-calendar .react-calendar__viewContainer .react-calendar__month-view .react-calendar__tile--active {
+  background-color: var(--background-color);
+}
+.main-container .addInvoice-container .addNewInvoice .form .bill-to .react-date-picker__calendar .react-calendar .react-calendar__viewContainer .react-calendar__month-view .react-calendar__month-view__days__day--neighboringMonth {
+  color: var(--sec-font-color) !important;
+}
+.main-container .addInvoice-container .addNewInvoice .form .bill-to .react-date-picker__calendar .react-calendar .react-calendar__viewContainer .react-calendar__month-view .react-calendar__month-view__days__day {
+  color: var(--font-color);
+  transition: var(--transition);
+}
+.main-container .addInvoice-container .addNewInvoice .form .bill-to .react-date-picker__calendar .react-calendar .react-calendar__viewContainer .react-calendar__month-view .react-calendar__month-view__days__day:hover {
+  background-color: var(--background-color);
+}
+.main-container .addInvoice-container .addNewInvoice .form .item-list {
+  border-bottom: 1px solid var(--sec-font-color);
+}
+.main-container .addInvoice-container .addNewInvoice .form .item-list .add-new-item {
+  padding: var(--padding-bottom) 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.main-container .addInvoice-container .addNewInvoice .form .item-list .add-new-item .add-item {
+  width: 200px;
+  color: var(--font-color);
+  background-color: var(--items-background-color);
+  border: none;
+  border-radius: var(--btn-border-radius);
+  padding: var(--btn-padding);
+  font-size: 16px;
+  font-weight: bold;
+  text-transform: capitalize;
+  transition: var(--transition);
+}
+.main-container .addInvoice-container .addNewInvoice .form .item-list .add-new-item .add-item:hover {
+  filter: var(--btn-bgHover);
+}
+.main-container .addInvoice-container .addNewInvoice .form .form-btn-handelers {
+  padding-top: var(--padding-bottom);
+}
+.main-container .addInvoice-container .addNewInvoice .form .form-btn-handelers .btn-handler {
+  padding: var(--btn-padding);
+  border: none;
+  border-radius: var(--btn-border-radius);
+  font-size: var(--font-size-md);
+  font-weight: 600;
+  text-transform: capitalize;
+  transition: var(--transition);
+}
+.main-container .addInvoice-container .addNewInvoice .form .form-btn-handelers .btn-handler:hover {
+  filter: var(--btn-bgHover);
+  box-shadow: var(--box-shadow);
+}
+.main-container .addInvoice-container .addNewInvoice .form .form-btn-handelers .handelers-container {
+  display: flex;
+  justify-content: flex-end;
+  gap: 20px;
+}
+.main-container .addInvoice-container .addNewInvoice .form .form-btn-handelers .handelers-container .send-btn {
+  background-color: var(--btn-bgColor);
+  color: var(--btn-color);
+}
+@media (max-width: 992px) {
+  .main-container .addInvoice-container .addNewInvoice .form .form-control .input,
+.main-container .addInvoice-container .addNewInvoice .form .form-control .select {
+    font-size: var(--font-size-sm);
+    padding: 0.3rem !important;
+  }
+  .main-container .addInvoice-container .addNewInvoice .form .form-control .input .calendar-icon,
+.main-container .addInvoice-container .addNewInvoice .form .form-control .select .calendar-icon {
+    font-size: 20px !important;
+  }
+  .main-container .addInvoice-container .addNewInvoice .form .form-control .err-message {
+    font-size: 8px;
+  }
+  .main-container .addInvoice-container .addNewInvoice .form .bill-to {
+    margin: 3rem 0;
+  }
+  .main-container .addInvoice-container .addNewInvoice .form .total {
+    font-size: var(--font-size-md);
+  }
+  .main-container .addInvoice-container .addNewInvoice .form .item-list .add-new-item .add-item {
+    width: 150px;
+    font-size: var(--font-size-md);
+  }
+  .main-container .addInvoice-container .addNewInvoice .form .form-btn-handelers .btn-handler {
+    font-size: var(--font-size-md);
+    white-space: nowrap;
+  }
+}
+@media (max-width: 768px) {
+  .main-container .form .form-btn-handelers {
+    text-align: center;
+  }
+  .main-container .form .form-btn-handelers .handelers-container {
+    justify-content: center !important;
+    margin-bottom: 15px;
+  }
+}
+.main-container .currentInvoice {
+  padding: var(--main-padding);
+}
+.main-container .currentInvoice .currentInvoice-container .header {
+  margin-bottom: var(--margin-bottom);
+}
+.main-container .currentInvoice .currentInvoice-container .header .back-to-home {
+  margin-bottom: var(--margin-bottom);
+}
+.main-container .currentInvoice .currentInvoice-container .header .back-to-home .back-to-home-btn {
+  font-size: var(--font-size-md);
+  color: var(--sec-font-color);
+  text-decoration: none;
+  transition: var(--transition);
+}
+.main-container .currentInvoice .currentInvoice-container .header .back-to-home .back-to-home-btn svg {
+  margin-right: 10px;
+  color: var(--btn-bgColor);
+  font-size: var(--font-size-lg);
+}
+.main-container .currentInvoice .currentInvoice-container .header .back-to-home .back-to-home-btn:hover {
+  color: var(--font-color);
+}
+.main-container .currentInvoice .currentInvoice-container .header .back-to-home .back-to-home-btn:hover svg {
+  color: var(--btn-bgColor);
+}
+.main-container .currentInvoice .currentInvoice-container .header .invoice-actions {
+  font-size: var(--font-size-md);
+  color: var(--font-color);
+  text-transform: capitalize;
+  padding: var(--btn-padding);
+  background-color: var(--items-background-color);
+  border-radius: var(--border-radius);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.main-container .currentInvoice .currentInvoice-container .header .invoice-actions .status-container {
+  display: flex;
+  align-items: center;
+}
+.main-container .currentInvoice .currentInvoice-container .header .invoice-actions .status-container .status {
+  width: 110px;
+  height: 40px;
+  margin-bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--border-radius);
+  position: relative;
+  font-weight: bold;
+}
+.main-container .currentInvoice .currentInvoice-container .header .invoice-actions .status-container .status::before {
+  content: "";
+  height: 6px;
+  width: 6px;
+  position: absolute;
+  left: 12px;
+  border-radius: 50%;
+}
+.main-container .currentInvoice .currentInvoice-container .header .invoice-actions .status-container .draft {
+  color: var(--draft-color);
+  background: var(--draft-BgColor);
+}
+.main-container .currentInvoice .currentInvoice-container .header .invoice-actions .status-container .draft::before {
+  background-color: var(--draft-color);
+}
+.main-container .currentInvoice .currentInvoice-container .header .invoice-actions .status-container .pending {
+  color: var(--pending-color);
+  background-color: var(--pending-BgColor);
+}
+.main-container .currentInvoice .currentInvoice-container .header .invoice-actions .status-container .pending::before {
+  background-color: var(--pending-color);
+}
+.main-container .currentInvoice .currentInvoice-container .header .invoice-actions .status-container .paid {
+  color: var(--paid-color);
+  background: var(--paid-BgColor);
+}
+.main-container .currentInvoice .currentInvoice-container .header .invoice-actions .status-container .paid::before {
+  background-color: var(--paid-color);
+}
+.main-container .currentInvoice .currentInvoice-container .header .invoice-actions .status-container span {
+  margin-right: 20px;
+}
+.main-container .currentInvoice .currentInvoice-container .header .invoice-actions .actions-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.main-container .currentInvoice .currentInvoice-container .header .invoice-actions .actions-container .btn {
+  color: var(--btn-color);
+  font-size: var(--font-size-md);
+  font-weight: bold;
+  text-transform: capitalize;
+  padding: var(--btn-padding);
+  border-radius: var(--btn-border-radius);
+  transition: var(--transition);
+}
+.main-container .currentInvoice .currentInvoice-container .header .invoice-actions .actions-container .btn:hover {
+  filter: var(--btn-bgHover);
+}
+.main-container .currentInvoice .currentInvoice-container .header .invoice-actions .actions-container .edit {
+  background-color: var(--background-color);
+  color: var(--font-color);
+}
+.main-container .currentInvoice .currentInvoice-container .header .invoice-actions .actions-container .delete {
+  background-color: var(--errorColor);
+}
+.main-container .currentInvoice .currentInvoice-container .header .invoice-actions .actions-container .paid {
+  background-color: var(--btn-bgColor);
+}
+.main-container .currentInvoice .currentInvoice-container .currentInvoice-details {
+  color: var(--font-color);
+  text-transform: capitalize;
+  padding: var(--padding-bottom);
+  background-color: var(--items-background-color);
+  border-radius: var(--border-radius);
+}
+.main-container .currentInvoice .currentInvoice-container .currentInvoice-details .heading-container {
+  padding-bottom: var(--padding-bottom);
+}
+.main-container .currentInvoice .currentInvoice-container .currentInvoice-details .heading-container .heading {
+  font-weight: bold;
+}
+.main-container .currentInvoice .currentInvoice-container .currentInvoice-details .heading-container .heading .hash {
+  color: var(--btn-bgColor);
+}
+.main-container .currentInvoice .currentInvoice-container .currentInvoice-details .heading-container .description-detail {
+  color: var(--sec-font-color);
+}
+.main-container .currentInvoice .currentInvoice-container .currentInvoice-details .box {
+  margin: 10px 0 30px;
+  border-bottom: var(--border-bottom);
+}
+.main-container .currentInvoice .currentInvoice-container .currentInvoice-details .box h6 {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+.main-container .currentInvoice .currentInvoice-container .currentInvoice-details .box .box-inner {
+  display: flex;
+  font-weight: bold;
+  font-size: var(--font-size-md);
+  color: var(--sec-font-color);
+  padding-bottom: var(--padding-bottom);
+}
+.main-container .currentInvoice .currentInvoice-container .currentInvoice-details .box .box-inner p {
+  min-width: 100px;
+  font-weight: normal;
+  margin: 0;
+}
+.main-container .currentInvoice .currentInvoice-container .currentInvoice-details .box .box-inner .name {
+  color: var(--font-color);
+}
+.main-container .currentInvoice .currentInvoice-container .currentInvoice-details .other-info span {
+  text-transform: none;
+}
+.main-container .currentInvoice .currentInvoice-container .currentInvoice-details .itemsTable-container {
+  padding: var(--padding-bottom);
+  background-color: var(--background-color);
+  border-radius: var(--border-radius);
+}
+.main-container .currentInvoice .currentInvoice-container .currentInvoice-details .itemsTable-container .items-table {
+  color: var(--font-color);
+  border: none;
+  overflow-x: auto;
+}
+.main-container .currentInvoice .currentInvoice-container .currentInvoice-details .itemsTable-container .items-table td,
+.main-container .currentInvoice .currentInvoice-container .currentInvoice-details .itemsTable-container .items-table th,
+.main-container .currentInvoice .currentInvoice-container .currentInvoice-details .itemsTable-container .items-table thead,
+.main-container .currentInvoice .currentInvoice-container .currentInvoice-details .itemsTable-container .items-table tbody,
+.main-container .currentInvoice .currentInvoice-container .currentInvoice-details .itemsTable-container .items-table tfoot {
+  border: none;
+}
+.main-container .currentInvoice .currentInvoice-container .currentInvoice-details .itemsTable-container .items-table thead {
+  color: var(--sec-font-color);
+}
+.main-container .currentInvoice .currentInvoice-container .currentInvoice-details .itemsTable-container .items-table tbody {
+  font-weight: normal;
+  font-size: var(--font-size-md);
+}
+.main-container .currentInvoice .currentInvoice-container .currentInvoice-details .itemsTable-container .items-table tfoot {
+  padding-top: var(--padding-bottom);
+}
+.main-container .currentInvoice .currentInvoice-container .currentInvoice-details .itemsTable-container .items-table tfoot td {
+  color: var(--btn-bgColor);
+  font-weight: bold;
+}
+.main-container .currentInvoice .alert {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: var(--overLayBg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  perspective: 1000px;
+}
+.main-container .currentInvoice .alert .alert__container {
+  width: 500px;
+  height: 400px;
+  background-color: var(--items-background-color);
+  color: var(--font-color);
+  padding: var(--padding-bottom);
+  border-radius: var(--border-radius);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  text-transform: capitalize;
+  animation: containerAnimation 0.5s cubic-bezier(0, 0.7, 0.21, 1.24);
+}
+.main-container .currentInvoice .alert .alert__container .error-sign {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  border: 5px solid var(--errorColor);
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  perspective: 100px;
+  animation: signAnimation 3s cubic-bezier(0, 0.91, 0.19, 1.31);
+}
+.main-container .currentInvoice .alert .alert__container .error-sign .first,
+.main-container .currentInvoice .alert .alert__container .error-sign .second {
+  position: absolute;
+  width: 5px;
+  height: 50px;
+  background-color: var(--errorColor);
+  border-radius: 50px;
+  transform-style: preserve-3d;
+  animation: xAnimation 2s cubic-bezier(0, 0.91, 0.19, 1.31);
+}
+.main-container .currentInvoice .alert .alert__container .error-sign .first {
+  transform: rotate(40deg);
+}
+.main-container .currentInvoice .alert .alert__container .error-sign .second {
+  transform: rotate(-40deg);
+}
+@keyframes signAnimation {
+  from {
+    transform: rotateX(90deg) translateY(20px);
+  }
+  to {
+    transform: rotateX(0deg) translateY(0px);
+  }
+}
+@keyframes xAnimation {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.main-container .currentInvoice .alert .alert__container .heading {
+  font-weight: bold;
+  margin: var(--padding-bottom) 0 1rem;
+}
+.main-container .currentInvoice .alert .alert__container .confirm-message {
+  color: var(--sec-font-color);
+  font-size: var(--font-size-md);
+  margin-bottom: 2rem;
+}
+.main-container .currentInvoice .alert .alert__container .actions-btn {
+  display: flex;
+  gap: 30px;
+}
+.main-container .currentInvoice .alert .alert__container .actions-btn .btn {
+  color: var(--font-color);
+  text-transform: capitalize;
+  font-weight: bold;
+  font-size: var(--font-size-md);
+  border-radius: var(--btn-border-radius);
+  padding: var(--btn-padding);
+  transition: var(--transition);
+}
+.main-container .currentInvoice .alert .alert__container .actions-btn .btn:hover {
+  filter: var(--btn-bgHover);
+}
+.main-container .currentInvoice .alert .alert__container .actions-btn .confirm {
+  background-color: var(--errorColor);
+  color: var(--btn-color);
+}
+.main-container .currentInvoice .alert .alert__container .actions-btn .discard {
+  background-color: var(--background-color);
+}
+@keyframes containerAnimation {
+  from {
+    transform: rotateX(90deg);
+  }
+  to {
+    transform: rotateX(0deg);
+  }
+}
+@media (max-width: 992px) {
+  .main-container .currentInvoice .currentInvoice-container .header .invoice-actions {
+    flex-direction: column;
+    font-size: var(--font-size-sm);
+    gap: 20px;
+  }
+  .main-container .currentInvoice .currentInvoice-container .header .invoice-actions .actions-container .btn {
+    font-size: var(--font-size-sm);
+  }
+  .main-container .currentInvoice .currentInvoice-container .currentInvoice-details .itemsTable-container thead,
+.main-container .currentInvoice .currentInvoice-container .currentInvoice-details .itemsTable-container tfoot {
+    font-size: var(--font-size-md);
+  }
+  .main-container .currentInvoice .currentInvoice-container .currentInvoice-details .itemsTable-container tbody {
+    font-size: var(--font-size-sm);
+  }
+  .main-container .currentInvoice .alert .alert__container {
+    padding: 1rem;
+    width: 350px;
+    height: 280px;
+  }
+  .main-container .currentInvoice .alert .alert__container .error-sign {
+    width: 60px;
+    height: 60px;
+  }
+  .main-container .currentInvoice .alert .alert__container .error-sign .first,
+.main-container .currentInvoice .alert .alert__container .error-sign .second {
+    height: 30px;
+  }
+  .main-container .currentInvoice .alert .alert__container .heading {
+    font-size: 16px;
+  }
+  .main-container .currentInvoice .alert .alert__container .confirm-message {
+    font-size: var(--font-size-sm);
+  }
+  .main-container .currentInvoice .alert .alert__container .actions-btn {
+    gap: 10px;
+  }
+  .main-container .currentInvoice .alert .alert__container .actions-btn .btn {
+    font-size: var(--font-size-sm);
+  }
+}
+
+/*# sourceMappingURL=index.css.map */

@@ -1,0 +1,1448 @@
+@import url('https://fonts.googleapis.com/css2?family=Spartan:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+
+:root {
+  --background-color: #141625;
+  --items-background-color: #232c43;
+  --font-color: #eae3dc;
+  --sec-font-color: hsla(0, 0%, 100%, .6);
+  --btn-bgColor: #7c5dfa;
+  --btn-bgHover: brightness(1.1);
+  --overLayBg: rgba(20, 22, 37, .95);
+  --draft-BgColor: #3B3F58;
+  --draft-color: #eae3dc;
+  --pending-BgColor: rgba(236, 141, 34, .1);
+  --pending-color: #ec8d22;
+  --paid-BgColor: rgba(105, 214, 159, .1);
+  --paid-color: #69d69f;
+  --errorColor: #E85757;
+  --btn-color: #eae3dc;
+  --transition: all 0.2s ease-in-out;
+  --box-shadow: 5px 0px 15px 0px rgb(0, 0, 0, 0.3);
+  --border-radius: 5px;
+  --btn-border-radius: 25px;
+  --input-radius: 5px;
+  --main-padding: 6rem 0;
+  --padding-bottom: 2rem;
+  --margin-bottom: 1.5rem;
+  --btn-padding: 0.75rem 1rem;
+  --main-header-width: 80px;
+  --small-header-width: 60px;
+  --border-bottom: 1px solid hsla(0, 0%, 100%, .06);
+  --font-size-lg: 24px;
+  --font-size-md: 13px;
+  --font-size-sm: 11px;
+}
+
+body.light {
+  --background-color: #d6d7db;
+  --items-background-color: #f7f6f9;
+  --font-color: #1a1a1a;
+  --sec-font-color: #1a1a1ace;
+  --btn-bgColor: hsl(25, 98%, 40%);
+  --overLayBg: hsla(0, 5%, 81%, 0.9);
+  --draft-BgColor: #D6D7DB;
+  --draft-color: #1a1a1a;
+}
+
+* {
+  transition: background-color 0.2s ease-in-out;
+}
+
+// Scrollbar custom style
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: var(--background-color);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #dddddd;
+  border-radius: 10px
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #999999;
+}
+
+
+// Hide arrows in input type number
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+// ANCHOR Main container
+.main-container {
+  font-family: "Spartan", sans-serif;
+  background-color: var(--background-color);
+  width: 100%;
+  min-height: 100vh;
+
+
+  // ANCHOR Aside
+  .aside {
+    height: 100vh;
+    width: var(--main-header-width);
+    background-color: var(--items-background-color);
+    border-top-right-radius: 14px;
+    border-bottom-right-radius: 14px;
+    position: fixed;
+    z-index: 200;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+
+    // ANCHOR Logo & setting
+    .logo,
+    .setting {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+
+    .logo {
+
+      a {
+        img {
+          width: var(--main-header-width);
+        }
+      }
+    }
+
+    .setting {
+
+      .theme {
+        width: var(--main-header-width);
+        padding: 1rem 0;
+        border-bottom: 1px solid var(--sec-font-color);
+
+        .toggle-theme {
+          cursor: pointer;
+          border: none;
+          background-color: transparent;
+          font-size: var(--font-size-lg);
+          color: var(--font-color);
+          transition: var(--transition);
+
+          &:hover {
+            color: var(--sec-font-color);
+          }
+        }
+      }
+
+      .user {
+        padding: 1rem 0;
+
+        a {
+          svg {
+            font-size: var(--font-size-lg);
+            color: var(--font-color);
+          }
+        }
+      }
+    }
+  }
+
+  @media (max-width:990px) {
+
+    // ANCHOR Aside 990px
+    .aside {
+      height: var(--small-header-width);
+      width: 100%;
+      flex-direction: row;
+      border-top-right-radius: unset;
+      border-bottom-right-radius: 14px;
+      border-bottom-left-radius: 14px;
+
+      // ANCHOR Logo & setting 990px
+      .logo {
+        height: 100%;
+        width: var(--small-header-width);
+
+        a {
+          img {
+            transform: rotate(90deg);
+            width: var(--small-header-width);
+          }
+        }
+      }
+
+      .setting {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        padding-right: var(--padding-bottom);
+
+        .theme {
+          border: none;
+          display: flex;
+          justify-self: center;
+        }
+      }
+    }
+  }
+
+  // ANCHOR app container
+  .app-container {
+    width: 100%;
+    padding: var(--main-padding);
+
+    .page {
+
+      // ANCHOR Add new invoice hint
+      .invoice-hint {
+        height: 30vh;
+        padding: var(--padding-bottom);
+        margin-top: var(--padding-bottom);
+        background-color: var(--items-background-color);
+        border-radius: var(--btn-border-radius);
+
+        .add-newInvoice {
+          width: 100%;
+          height: 100%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          gap: 15px;
+          color: var(--font-color);
+          text-transform: capitalize;
+          font-size: var(--font-size-lg);
+          line-height: var(--font-size-lg);
+          cursor: pointer;
+          transition: var(--transition);
+
+          &:hover {
+            filter: drop-shadow(10px 10px 10px var(--background-color));
+
+          }
+
+          svg {
+            font-size: calc(var(--font-size-lg) + .75rem);
+          }
+
+          h1 {
+            font-weight: bolder;
+            margin: 0;
+          }
+        }
+      }
+
+      @media (max-width:992px) {
+        .invoice-hint {
+          padding: var(--btn-padding);
+
+          .add-newInvoice {
+            flex-direction: column;
+            text-align: center;
+
+            h1 {
+              font-size: var(--font-size-lg);
+            }
+
+            svg {
+              font-size: var(--font-size-lg);
+            }
+          }
+        }
+      }
+
+      @media (max-width: 768px) {
+        .invoice-hint {
+          padding: var(--btn-padding);
+
+          .add-newInvoice {
+            flex-direction: column;
+            text-align: center;
+
+            h1 {
+              font-size: var(--font-size-md);
+            }
+
+            svg {
+              font-size: var(--font-size-lg);
+            }
+          }
+        }
+      }
+
+      // ANCHOR header
+      .header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        color: var(--font-color);
+        padding-bottom: var(--padding-bottom);
+
+        .invoices-counter {
+          h2 {
+            font-weight: bold;
+          }
+
+          span {
+            color: var(--sec-font-color);
+            font-size: var(--font-size-md);
+          }
+        }
+
+        // ANCHOR Filter
+        .filter {
+          margin-right: 20px;
+          position: relative;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          cursor: pointer;
+
+          .filter-btn {
+            font-size: var(--font-size-md);
+            color: var(--font-color);
+            margin: 0 10px 0 0;
+            transition: var(--transition);
+            background-color: transparent;
+            border: none;
+
+            &:hover {
+              color: var(--sec-font-color)
+            }
+          }
+
+          svg {
+            color: var(--btn-bgColor);
+            transition: var(--transition);
+            font-size: var(--font-size-lg);
+          }
+
+          svg.active {
+            transform: rotate(180deg);
+          }
+
+          .filter-list {
+            display: none;
+            width: 120%;
+            list-style: none;
+            position: absolute;
+            top: 30px;
+            left: 0;
+            z-index: 99;
+            padding: 1rem 2.5rem;
+            background-color: var(--items-background-color);
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            animation: filterAnimation 0.5s ease-in-out 1;
+
+            li {
+              margin-bottom: 10px;
+
+              &:last-of-type {
+                margin-bottom: 0;
+              }
+
+              input {
+                display: none;
+
+                &:checked+label::before {
+                  background-color: var(--btn-bgColor);
+                }
+              }
+
+              label {
+                position: relative;
+                cursor: pointer;
+                transition: var(--transition);
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+
+                &::before,
+                &::after {
+                  content: "";
+                  height: 15px;
+                  width: 15px;
+                  position: absolute;
+                  left: -25px;
+                  border-radius: 3px;
+                  transition: var(--transition);
+                }
+
+                &::before {
+                  background-color: var(--background-color);
+                }
+
+                &::after {
+                  border: 2px solid var(--btn-bgColor);
+                  opacity: 0;
+
+                }
+
+                &:hover {
+                  &::after {
+                    opacity: 1;
+                  }
+                }
+              }
+            }
+          }
+
+          .filter-list.active {
+            display: block;
+          }
+
+          @keyframes filterAnimation {
+            from {
+              top: 40px;
+              opacity: 0;
+            }
+
+            to {
+              top: 30px;
+              opacity: 1;
+            }
+          }
+        }
+
+        // ANCHOR invoices actions
+        .invoice-actions {
+          width: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: flex-end;
+
+          .add-invoice {
+            padding: var(--btn-padding);
+            border: none;
+            border-radius: var(--btn-border-radius);
+            background-color: var(--btn-bgColor);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+
+            &:hover {
+              filter: var(--btn-bgHover);
+            }
+
+            img {
+              width: 25px;
+              margin-right: 10px;
+            }
+
+            h6 {
+              color: var(--btn-color);
+              margin: 0;
+              font-weight: bold;
+            }
+          }
+
+        }
+      }
+
+      // ANCHOR invoices container
+      .invoices-container {
+
+        .invoice {
+          width: 100%;
+          padding: 20px;
+          margin-bottom: 20px;
+          background-color: var(--items-background-color);
+          border-radius: var(--border-radius);
+          transition: var(--transition);
+          position: relative;
+          z-index: 9;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          text-decoration: none;
+          color: var(--font-color);
+          font-size: var(--font-size-md);
+
+          &::after {
+            content: "";
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0%;
+            border-radius: var(--border-radius);
+            border: 2px solid var(--btn-bgColor);
+            opacity: 0;
+            transition: var(--transition);
+
+          }
+
+          &:hover {
+            &::after {
+              opacity: 1;
+            }
+          }
+
+          .id {
+            margin-right: 10px;
+          }
+
+          .invoice-info,
+          .invoice-status {
+            display: grid;
+            align-items: center;
+            gap: 10px;
+            height: 100%;
+          }
+
+          .invoice-info {
+            grid-template-columns: repeat(3, 1fr);
+
+            .due-date,
+            .name {
+              margin-bottom: 0;
+            }
+
+            .due-date {
+              color: var(--sec-font-color);
+            }
+
+            .id {
+              span {
+                color: var(--btn-bgColor);
+              }
+            }
+          }
+
+          .invoice-status {
+            grid-template-columns: repeat(2, 1fr);
+
+            .status-container {
+              display: flex;
+              align-items: center;
+
+              .status {
+                width: 110px;
+                height: 40px;
+                margin-right: 20px;
+                margin-bottom: 0;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: var(--border-radius);
+                position: relative;
+                font-weight: bold;
+
+                &::before {
+                  content: "";
+                  height: 6px;
+                  width: 6px;
+                  position: absolute;
+                  left: 12px;
+                  border-radius: 50%;
+                }
+              }
+
+              .draft {
+                color: var(--draft-color);
+                background: var(--draft-BgColor);
+
+                &::before {
+                  background-color: var(--draft-color);
+                }
+              }
+
+              .pending {
+                color: var(--pending-color);
+                background-color: var(--pending-BgColor);
+
+                &::before {
+                  background-color: var(--pending-color);
+                }
+              }
+
+              .paid {
+                color: var(--paid-color);
+                background: var(--paid-BgColor);
+
+                &::before {
+                  background-color: var(--paid-color);
+                }
+              }
+            }
+
+            svg {
+              color: var(--btn-bgColor);
+              font-size: var(--font-size-lg);
+            }
+          }
+        }
+
+      }
+    }
+
+    @media (max-width:768px) {
+      .page {
+
+        // ANCHOR header 768px 
+        .header {
+          padding-bottom: 0;
+          flex-direction: column;
+
+          .invoices-counter {
+            text-align: center;
+            margin-bottom: 20px;
+
+            span {
+              font-size: var(--font-size-sm);
+            }
+          }
+        }
+
+        // ANCHOR filter 768px
+        .filter {
+          margin-right: 10px;
+          font-size: var(--font-size-md);
+        }
+
+        .add-invoice {
+          padding: 0.5rem !important;
+
+          h6 {
+            font-size: var(--font-size-sm);
+          }
+        }
+
+        .invoices-container {
+          .invoice {
+
+            .invoice-info,
+            .invoice-status {
+              font-size: var(--font-size-sm);
+              display: flex;
+              flex-direction: row;
+              justify-content: space-between;
+              align-items: center;
+            }
+
+            .invoice-info {
+              padding: 10px 0;
+            }
+
+            .invoice-status {
+              .invoice-cost {
+                margin-right: 10px;
+              }
+
+              .status-container {
+                .status {
+                  margin-right: 5px;
+                  width: 70px;
+                  padding-left: 10px;
+
+                  &::before {
+                    left: 8px;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+  }
+
+  // ANCHOR Add new invoice
+
+  .addInvoice-container {
+
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    background-color: var(--overLayBg);
+    overflow-y: auto;
+
+    .addNewInvoice {
+      padding: var(--main-padding);
+      text-transform: capitalize;
+
+      .addInvoices-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-bottom: var(--padding-bottom);
+
+        .heading {
+          color: var(--font-color);
+          font-weight: bold;
+        }
+
+        .close-btn {
+          border: none;
+          background-color: transparent;
+
+          svg {
+            width: 35px;
+            height: 35px;
+            color: var(--errorColor);
+            transition: var(--transition);
+
+            &:hover {
+              filter: var(--btn-bgHover);
+            }
+          }
+        }
+      }
+
+      // ANCHOR Form
+      .form {
+
+        .form-section {
+          .form-headers {
+            font-size: 18px;
+            font-weight: bold;
+            color: var(--btn-bgColor);
+            margin-bottom: var(--margin-bottom);
+
+          }
+
+          .form-control {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            background-color: transparent;
+            border: none;
+            position: relative;
+
+            label {
+              color: var(--font-color);
+              margin: 0.5rem 0;
+              font-size: var(--font-size-md);
+              font-weight: 500;
+            }
+
+            .input,
+            .select {
+              position: relative;
+              width: 100%;
+              padding: 0.6rem 1rem;
+              background-color: var(--items-background-color);
+              border: none;
+              border-radius: var(--input-radius);
+              outline: none;
+              caret-color: var(--font-color);
+              color: var(--sec-font-color);
+
+              .calendar-icon {
+                font-size: var(--font-size-lg);
+                color: var(--btn-bgColor);
+                position: absolute;
+                top: 50%;
+                right: 1rem;
+                transform: translateY(-50%);
+              }
+            }
+
+            .select {
+              color: var(--font-color);
+              text-transform: capitalize;
+            }
+
+
+            .total {
+              color: var(--font-color);
+              margin-bottom: 0;
+              padding: 0.6rem 0;
+            }
+
+            .remove-btn {
+              border: none;
+              background-color: transparent;
+              color: var(--errorColor);
+              font-size: var(--font-size-lg);
+              transition: var(--transition);
+
+              &:hover {
+                filter: var(--btn-bgHover);
+              }
+            }
+
+            .err-message {
+              color: var(--errorColor);
+              font-size: var(--font-size-sm);
+              position: absolute;
+              top: 98%;
+            }
+          }
+        }
+
+        .bill-to {
+          margin: var(--main-padding);
+
+          // ANCHOR Date calendar custom style
+          .react-date-picker__wrapper {
+            border: none;
+
+            .react-date-picker__inputGroup {
+              padding: 0;
+
+              input,
+              span {
+                color: var(--font-color);
+                outline: none
+              }
+            }
+
+          }
+
+          .react-date-picker__calendar {
+            .react-calendar {
+              color: var(--font-color);
+              background-color: var(--items-background-color);
+              border: none;
+              box-shadow: var(--box-shadow);
+              border-radius: var(--input-radius);
+
+              .react-calendar__navigation {
+                button {
+                  color: var(--font-color);
+                  transition: var(--transition);
+
+                  &:hover {
+                    background-color: var(--background-color);
+                  }
+                }
+              }
+
+              .react-calendar__viewContainer {
+                .react-calendar__month-view {
+                  .react-calendar__month-view__weekdays {
+                    .react-calendar__month-view__weekdays__weekday {
+                      abbr {
+                        text-decoration: none;
+                      }
+                    }
+                  }
+
+                  .react-calendar__tile--now {
+                    background-color: var(--sec-font-color);
+                  }
+
+                  .react-calendar__tile--active {
+                    background-color: var(--background-color);
+                  }
+
+                  .react-calendar__month-view__days__day--neighboringMonth {
+                    color: var(--sec-font-color) !important;
+                  }
+
+                  .react-calendar__month-view__days__day {
+                    color: var(--font-color);
+                    transition: var(--transition);
+
+                    &:hover {
+                      background-color: var(--background-color);
+                    }
+                  }
+                }
+              }
+            }
+          }
+
+        }
+
+        // ANCHOR Item list
+        .item-list {
+          border-bottom: 1px solid var(--sec-font-color);
+
+          .add-new-item {
+            padding: var(--padding-bottom) 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            .add-item {
+              width: 200px;
+              color: var(--font-color);
+              background-color: var(--items-background-color);
+              border: none;
+              border-radius: var(--btn-border-radius);
+              padding: var(--btn-padding);
+              font-size: 16px;
+              font-weight: bold;
+              text-transform: capitalize;
+              transition: var(--transition);
+
+              &:hover {
+                filter: var(--btn-bgHover);
+              }
+            }
+          }
+        }
+
+        .form-btn-handelers {
+          padding-top: var(--padding-bottom);
+
+          .btn-handler {
+            padding: var(--btn-padding);
+            border: none;
+            border-radius: var(--btn-border-radius);
+            font-size: var(--font-size-md);
+            font-weight: 600;
+            text-transform: capitalize;
+            transition: var(--transition);
+
+            &:hover {
+              filter: var(--btn-bgHover);
+              box-shadow: var(--box-shadow);
+            }
+          }
+
+          .handelers-container {
+            display: flex;
+            justify-content: flex-end;
+            gap: 20px;
+
+            .send-btn {
+              background-color: var(--btn-bgColor);
+              color: var(--btn-color);
+            }
+          }
+        }
+      }
+    }
+
+  }
+
+  @media (max-width:992px) {
+
+    // ANCHOR Add new invoice 992px
+    .addInvoice-container {
+      .addNewInvoice {
+        .form {
+          .form-control {
+
+            .input,
+            .select {
+              font-size: var(--font-size-sm);
+              padding: 0.3rem !important;
+
+              .calendar-icon {
+                font-size: 20px !important;
+              }
+            }
+
+            .err-message {
+              font-size: 8px;
+            }
+          }
+
+          .bill-to {
+            margin: 3rem 0;
+          }
+
+          .total {
+            font-size: var(--font-size-md);
+          }
+
+          .item-list {
+            .add-new-item {
+              .add-item {
+                width: 150px;
+                font-size: var(--font-size-md);
+              }
+            }
+          }
+
+          .form-btn-handelers {
+            .btn-handler {
+              font-size: var(--font-size-md);
+              white-space: nowrap;
+            }
+
+
+          }
+        }
+      }
+    }
+  }
+
+  @media (max-width:768px) {
+
+    // ANCHOR Form 768px
+    .form {
+
+      .form-btn-handelers {
+        text-align: center;
+
+        .handelers-container {
+          justify-content: center !important;
+          margin-bottom: 15px;
+        }
+      }
+    }
+  }
+
+  // ANCHOR Current invoice
+  .currentInvoice {
+    padding: var(--main-padding);
+
+    .currentInvoice-container {
+
+      // ANCHOR Current invoice header
+      .header {
+        margin-bottom: var(--margin-bottom);
+
+        .back-to-home {
+          margin-bottom: var(--margin-bottom);
+
+          .back-to-home-btn {
+            font-size: var(--font-size-md);
+            color: var(--sec-font-color);
+            text-decoration: none;
+            transition: var(--transition);
+
+            svg {
+              margin-right: 10px;
+              color: var(--btn-bgColor);
+              font-size: var(--font-size-lg);
+            }
+
+            &:hover {
+              color: var(--font-color);
+
+              svg {
+                color: var(--btn-bgColor);
+              }
+            }
+          }
+        }
+
+        .invoice-actions {
+          font-size: var(--font-size-md);
+          color: var(--font-color);
+          text-transform: capitalize;
+          padding: var(--btn-padding);
+          background-color: var(--items-background-color);
+          border-radius: var(--border-radius);
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+
+          .status-container {
+            display: flex;
+            align-items: center;
+
+            .status {
+              width: 110px;
+              height: 40px;
+              margin-bottom: 0;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              border-radius: var(--border-radius);
+              position: relative;
+              font-weight: bold;
+
+              &::before {
+                content: "";
+                height: 6px;
+                width: 6px;
+                position: absolute;
+                left: 12px;
+                border-radius: 50%;
+              }
+            }
+
+            .draft {
+              color: var(--draft-color);
+              background: var(--draft-BgColor);
+
+              &::before {
+                background-color: var(--draft-color);
+              }
+            }
+
+            .pending {
+              color: var(--pending-color);
+              background-color: var(--pending-BgColor);
+
+              &::before {
+                background-color: var(--pending-color);
+              }
+            }
+
+            .paid {
+              color: var(--paid-color);
+              background: var(--paid-BgColor);
+
+              &::before {
+                background-color: var(--paid-color);
+              }
+            }
+
+            span {
+              margin-right: 20px;
+
+            }
+          }
+
+          .actions-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+
+            .btn {
+              color: var(--btn-color);
+              font-size: var(--font-size-md);
+              font-weight: bold;
+              text-transform: capitalize;
+              padding: var(--btn-padding);
+              border-radius: var(--btn-border-radius);
+              transition: var(--transition);
+
+              &:hover {
+                filter: var(--btn-bgHover);
+              }
+            }
+
+            .edit {
+              background-color: var(--background-color);
+              color: var(--font-color);
+            }
+
+            .delete {
+              background-color: var(--errorColor);
+            }
+
+            .paid {
+              background-color: var(--btn-bgColor);
+            }
+          }
+        }
+      }
+
+      // ANCHOR current invoice details
+      .currentInvoice-details {
+        color: var(--font-color);
+        text-transform: capitalize;
+        padding: var(--padding-bottom);
+        background-color: var(--items-background-color);
+        border-radius: var(--border-radius);
+
+        .heading-container {
+          padding-bottom: var(--padding-bottom);
+
+          .heading {
+            font-weight: bold;
+
+            .hash {
+              color: var(--btn-bgColor);
+            }
+          }
+
+          .description-detail {
+            color: var(--sec-font-color);
+          }
+        }
+
+        .box {
+          margin: 10px 0 30px;
+          border-bottom: var(--border-bottom);
+
+          h6 {
+            font-weight: bold;
+            margin-bottom: 10px;
+          }
+
+          .box-inner {
+            display: flex;
+            font-weight: bold;
+            font-size: var(--font-size-md);
+            color: var(--sec-font-color);
+            padding-bottom: var(--padding-bottom);
+
+            p {
+              min-width: 100px;
+              font-weight: normal;
+              margin: 0;
+            }
+
+            .name {
+              color: var(--font-color);
+            }
+          }
+        }
+
+        .other-info {
+          span {
+            text-transform: none;
+          }
+        }
+
+        // ANCHOR items table
+        .itemsTable-container {
+          padding: var(--padding-bottom);
+          background-color: var(--background-color);
+          border-radius: var(--border-radius);
+
+          .items-table {
+            color: var(--font-color);
+            border: none;
+            overflow-x: auto;
+
+            td,
+            th,
+            thead,
+            tbody,
+            tfoot {
+              border: none;
+            }
+
+            thead {
+              color: var(--sec-font-color);
+            }
+
+            tbody {
+              font-weight: normal;
+              font-size: var(--font-size-md);
+            }
+
+            tfoot {
+              padding-top: var(--padding-bottom);
+
+              td {
+                color: var(--btn-bgColor);
+                font-weight: bold;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    // ANCHOR Alert
+    .alert {
+      width: 100%;
+      height: 100%;
+      position: fixed;
+      top: 0;
+      left: 0;
+      background-color: var(--overLayBg);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      perspective: 1000px;
+
+      .alert__container {
+        width: 500px;
+        height: 400px;
+        background-color: var(--items-background-color);
+        color: var(--font-color);
+        padding: var(--padding-bottom);
+        border-radius: var(--border-radius);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        text-align: center;
+        text-transform: capitalize;
+        animation: containerAnimation 0.5s cubic-bezier(0, 0.7, 0.21, 1.24);
+
+        .error-sign {
+          width: 90px;
+          height: 90px;
+          border-radius: 50%;
+          border: 5px solid var(--errorColor);
+          position: relative;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          perspective: 100px;
+          animation: signAnimation 3s cubic-bezier(0, .91, .19, 1.31);
+
+          .first,
+          .second {
+            position: absolute;
+            width: 5px;
+            height: 50px;
+            background-color: var(--errorColor);
+            border-radius: 50px;
+            transform-style: preserve-3d;
+            animation: xAnimation 2s cubic-bezier(0, .91, .19, 1.31);
+          }
+
+          .first {
+            transform: rotate(40deg);
+          }
+
+          .second {
+            transform: rotate(-40deg);
+          }
+
+          // ANCHOR sign animation
+          @keyframes signAnimation {
+            from {
+              transform: rotateX(90deg) translateY(20px);
+            }
+
+            to {
+              transform: rotateX(0deg) translateY(0px);
+            }
+          }
+
+          @keyframes xAnimation {
+            from {
+              opacity: 0;
+            }
+
+            to {
+              opacity: 1;
+
+            }
+          }
+        }
+
+        .heading {
+          font-weight: bold;
+          margin: var(--padding-bottom) 0 1rem;
+        }
+
+        .confirm-message {
+          color: var(--sec-font-color);
+          font-size: var(--font-size-md);
+          margin-bottom: 2rem;
+        }
+
+        .actions-btn {
+          display: flex;
+          gap: 30px;
+
+          .btn {
+            color: var(--font-color);
+            text-transform: capitalize;
+            font-weight: bold;
+            font-size: var(--font-size-md);
+            border-radius: var(--btn-border-radius);
+            padding: var(--btn-padding);
+            transition: var(--transition);
+
+            &:hover {
+              filter: var(--btn-bgHover);
+            }
+          }
+
+          .confirm {
+            background-color: var(--errorColor);
+            color: var(--btn-color);
+          }
+
+          .discard {
+            background-color: var(--background-color);
+          }
+        }
+
+      }
+
+      @keyframes containerAnimation {
+        from {
+          transform: rotateX(90deg)
+        }
+
+        to {
+          transform: rotateX(0deg)
+        }
+      }
+    }
+  }
+
+  @media (max-width: 992px) {
+
+    // ANCHOR current invoice 768px
+    .currentInvoice {
+      .currentInvoice-container {
+        .header {
+          .invoice-actions {
+            flex-direction: column;
+            font-size: var(--font-size-sm);
+            gap: 20px;
+
+            .actions-container {
+              .btn {
+                font-size: var(--font-size-sm);
+              }
+            }
+          }
+        }
+
+        // ANCHOR current invoice details 992px
+        .currentInvoice-details {
+
+          // ANCHOR items table 992px
+          .itemsTable-container {
+
+            thead,
+            tfoot {
+              font-size: var(--font-size-md);
+            }
+
+            tbody {
+              font-size: var(--font-size-sm);
+            }
+          }
+        }
+      }
+
+      // ANCHOR alert 992px
+      .alert {
+        .alert__container {
+          padding: 1rem;
+          width: 350px;
+          height: 280px;
+
+          .error-sign {
+            width: 60px;
+            height: 60px;
+
+            .first,
+            .second {
+              height: 30px;
+            }
+          }
+
+          .heading {
+            font-size: 16px;
+          }
+
+          .confirm-message {
+            font-size: var(--font-size-sm);
+          }
+
+          .actions-btn {
+            gap: 10px;
+
+            .btn {
+              font-size: var(--font-size-sm);
+            }
+          }
+        }
+      }
+    }
+
+  }
+
+}
