@@ -75,7 +75,7 @@ function AddInvoice() {
     } else if (updateInvoice) {
       dispatch({
         type: "EDIT_ITEM",
-        payload: { data: invoiceData, list: itemsList, date },
+        payload: { invoiceData, itemsList, date },
       });
       setInvoiceData(resetInvoiceData);
       setItemsList([resetItemList]);
@@ -90,7 +90,6 @@ function AddInvoice() {
         itemName: "",
         qty: 0,
         price: 0,
-        total: 0.0,
       };
       const newItemsList = [...itemsList, newItem];
       setItemsList(newItemsList);
@@ -397,12 +396,8 @@ function AddInvoice() {
                 <section className="form-section item-list">
                   <h6 className="form-headers">item list</h6>
                   {itemsList.map((item) => {
-                    const { itemListID, itemName, qty, price, total } = item;
-
-                    const handleTotal = (qty, price) => {
-                      return +qty * +price;
-                    };
-
+                    const { itemListID, itemName, qty, price } = item;
+                    let total = (qty * price).toFixed(2);
                     return (
                       <div className="item" key={itemListID}>
                         <div className="row align-items-center">
@@ -444,7 +439,6 @@ function AddInvoice() {
                                         ? {
                                             ...ele,
                                             qty: e.target.value,
-                                            total: handleTotal(qty, price),
                                           }
                                         : ele
                                     )
@@ -469,7 +463,6 @@ function AddInvoice() {
                                         ? {
                                             ...ele,
                                             price: e.target.value,
-                                            total: handleTotal(qty, price),
                                           }
                                         : ele
                                     )

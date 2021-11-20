@@ -44,7 +44,8 @@ function CurrentInvoice() {
   } = invoice;
 
   const finalPriceMap = itemList.map((item) => {
-    return item.total;
+    let total = item.price * item.qty;
+    return total;
   });
 
   const finalPriceReduce = finalPriceMap.reduce((acc, item) => {
@@ -238,8 +239,8 @@ function CurrentInvoice() {
                     </thead>
                     <tbody>
                       {itemList.map((item) => {
-                        const { itemName, price, qty, total, itemListID } =
-                          item;
+                        const { itemName, price, qty, itemListID } = item;
+                        let total = (qty * price).toFixed(2);
                         return (
                           <tr key={itemListID}>
                             <th scope="row">{itemName || "N/A"}</th>
@@ -253,7 +254,7 @@ function CurrentInvoice() {
                     <tfoot>
                       <tr>
                         <td colSpan="3">grand total</td>
-                        <td>${finalPriceReduce}</td>
+                        <td>${Math.round(finalPriceReduce)}</td>
                       </tr>
                     </tfoot>
                   </table>

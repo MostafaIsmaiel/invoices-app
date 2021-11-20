@@ -45,7 +45,6 @@ function AppProvider({ children }) {
       itemName: "",
       qty: 0,
       price: 0,
-      total: 0.0,
     },
   ]);
   const [invoiceData, setInvoiceData] = useState({
@@ -89,7 +88,6 @@ function AppProvider({ children }) {
     itemName: "",
     qty: 0,
     price: 0,
-    total: 0.0,
   };
 
   // ANCHOR Generate id function
@@ -161,7 +159,9 @@ function AppProvider({ children }) {
     // Delete invoice
     else if (action.type === "DELETE_INVOICE") {
       return state.filter((invoice) => invoice.invoiceID !== action.payload);
-    } else if (action.type === "PAID_ITEM") {
+    }
+    // Mark as paid
+    else if (action.type === "PAID_ITEM") {
       return state.map((invoice) => {
         if (invoice.invoiceID === action.payload) {
           return { ...invoice, status: "paid" };
@@ -172,15 +172,15 @@ function AppProvider({ children }) {
     }
     // Edit invoice
     else if (action.type === "EDIT_ITEM") {
-      const { data, list, date } = action.payload;
+      const { invoiceData, itemsList, date } = action.payload;
 
       return state.map((invoice) => {
-        if (invoice.invoiceID === data.invoiceID) {
+        if (invoice.invoiceID === invoiceData.invoiceID) {
           return {
             ...invoice,
-            ...data,
+            ...invoiceData,
             date,
-            itemList: [...list],
+            itemList: [...itemsList],
           };
         } else {
           return invoice;

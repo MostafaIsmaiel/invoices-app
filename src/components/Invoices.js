@@ -36,9 +36,11 @@ function Invoices() {
       {final.map((invoice) => {
         const { invoiceID, clientName, itemList, date, status, paymentTerms } =
           invoice;
+
         let total = 0;
-        itemList.map((price) => {
-          return (total += price.total);
+        itemList.map((item) => {
+          let price = item.price * item.qty;
+          return (total += price);
         });
 
         return (
