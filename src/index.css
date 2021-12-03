@@ -954,15 +954,22 @@ input[type=number] {
   color: var(--font-color);
   padding: var(--padding-bottom);
   border-radius: var(--border-radius);
+  transform-style: preserve-3d;
+  transform-origin: center top;
+  animation: containerAnimation 1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.main-container .currentInvoice .alert .alert__container .alert-face {
+  width: 100%;
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
   text-align: center;
   text-transform: capitalize;
-  animation: containerAnimation 0.5s cubic-bezier(0, 0.7, 0.21, 1.24);
+  backface-visibility: hidden;
 }
-.main-container .currentInvoice .alert .alert__container .error-sign {
+.main-container .currentInvoice .alert .alert__container .alert-face .error-sign {
   width: 90px;
   height: 90px;
   border-radius: 50%;
@@ -972,54 +979,35 @@ input[type=number] {
   justify-content: center;
   align-items: center;
   perspective: 100px;
-  animation: signAnimation 3s cubic-bezier(0, 0.91, 0.19, 1.31);
 }
-.main-container .currentInvoice .alert .alert__container .error-sign .first,
-.main-container .currentInvoice .alert .alert__container .error-sign .second {
+.main-container .currentInvoice .alert .alert__container .alert-face .error-sign .first,
+.main-container .currentInvoice .alert .alert__container .alert-face .error-sign .second {
   position: absolute;
   width: 5px;
   height: 50px;
   background-color: var(--errorColor);
   border-radius: 50px;
-  transform-style: preserve-3d;
-  animation: xAnimation 2s cubic-bezier(0, 0.91, 0.19, 1.31);
 }
-.main-container .currentInvoice .alert .alert__container .error-sign .first {
+.main-container .currentInvoice .alert .alert__container .alert-face .error-sign .first {
   transform: rotate(40deg);
 }
-.main-container .currentInvoice .alert .alert__container .error-sign .second {
+.main-container .currentInvoice .alert .alert__container .alert-face .error-sign .second {
   transform: rotate(-40deg);
 }
-@keyframes signAnimation {
-  from {
-    transform: rotateX(90deg) translateY(20px);
-  }
-  to {
-    transform: rotateX(0deg) translateY(0px);
-  }
-}
-@keyframes xAnimation {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-.main-container .currentInvoice .alert .alert__container .heading {
+.main-container .currentInvoice .alert .alert__container .alert-face .heading {
   font-weight: bold;
   margin: var(--padding-bottom) 0 1rem;
 }
-.main-container .currentInvoice .alert .alert__container .confirm-message {
+.main-container .currentInvoice .alert .alert__container .alert-face .confirm-message {
   color: var(--sec-font-color);
   font-size: var(--font-size-md);
   margin-bottom: 2rem;
 }
-.main-container .currentInvoice .alert .alert__container .actions-btn {
+.main-container .currentInvoice .alert .alert__container .alert-face .actions-btn {
   display: flex;
   gap: 30px;
 }
-.main-container .currentInvoice .alert .alert__container .actions-btn .btn {
+.main-container .currentInvoice .alert .alert__container .alert-face .actions-btn .btn {
   color: var(--font-color);
   text-transform: capitalize;
   font-weight: bold;
@@ -1028,22 +1016,22 @@ input[type=number] {
   padding: var(--btn-padding);
   transition: var(--transition);
 }
-.main-container .currentInvoice .alert .alert__container .actions-btn .btn:hover {
+.main-container .currentInvoice .alert .alert__container .alert-face .actions-btn .btn:hover {
   filter: var(--btn-bgHover);
 }
-.main-container .currentInvoice .alert .alert__container .actions-btn .confirm {
+.main-container .currentInvoice .alert .alert__container .alert-face .actions-btn .confirm {
   background-color: var(--errorColor);
   color: var(--btn-color);
 }
-.main-container .currentInvoice .alert .alert__container .actions-btn .discard {
+.main-container .currentInvoice .alert .alert__container .alert-face .actions-btn .discard {
   background-color: var(--background-color);
 }
 @keyframes containerAnimation {
   from {
-    transform: rotateX(90deg);
+    transform: rotateX(180deg) translateY(-100%);
   }
   to {
-    transform: rotateX(0deg);
+    transform: rotateX(0deg) translateY(0%);
   }
 }
 @media (max-width: 992px) {
@@ -1067,24 +1055,24 @@ input[type=number] {
     width: 350px;
     height: 280px;
   }
-  .main-container .currentInvoice .alert .alert__container .error-sign {
+  .main-container .currentInvoice .alert .alert__container .alert-face .error-sign {
     width: 60px;
     height: 60px;
   }
-  .main-container .currentInvoice .alert .alert__container .error-sign .first,
-.main-container .currentInvoice .alert .alert__container .error-sign .second {
+  .main-container .currentInvoice .alert .alert__container .alert-face .error-sign .first,
+.main-container .currentInvoice .alert .alert__container .alert-face .error-sign .second {
     height: 30px;
   }
-  .main-container .currentInvoice .alert .alert__container .heading {
+  .main-container .currentInvoice .alert .alert__container .alert-face .heading {
     font-size: 16px;
   }
-  .main-container .currentInvoice .alert .alert__container .confirm-message {
+  .main-container .currentInvoice .alert .alert__container .alert-face .confirm-message {
     font-size: var(--font-size-sm);
   }
-  .main-container .currentInvoice .alert .alert__container .actions-btn {
+  .main-container .currentInvoice .alert .alert__container .alert-face .actions-btn {
     gap: 10px;
   }
-  .main-container .currentInvoice .alert .alert__container .actions-btn .btn {
+  .main-container .currentInvoice .alert .alert__container .alert-face .actions-btn .btn {
     font-size: var(--font-size-sm);
   }
 }

@@ -1255,104 +1255,87 @@ input[type=number] {
         color: var(--font-color);
         padding: var(--padding-bottom);
         border-radius: var(--border-radius);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
-        text-align: center;
-        text-transform: capitalize;
-        animation: containerAnimation 0.5s cubic-bezier(0, 0.7, 0.21, 1.24);
+        transform-style: preserve-3d;
+        transform-origin: center top;
+        animation: containerAnimation 1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 
-        .error-sign {
-          width: 90px;
-          height: 90px;
-          border-radius: 50%;
-          border: 5px solid var(--errorColor);
-          position: relative;
+        .alert-face {
+          width: 100%;
+          height: 100%;
           display: flex;
-          justify-content: center;
           align-items: center;
-          perspective: 100px;
-          animation: signAnimation 3s cubic-bezier(0, .91, .19, 1.31);
+          justify-content: center;
+          flex-direction: column;
+          text-align: center;
+          text-transform: capitalize;
+          backface-visibility: hidden;
 
-          .first,
-          .second {
-            position: absolute;
-            width: 5px;
-            height: 50px;
-            background-color: var(--errorColor);
-            border-radius: 50px;
-            transform-style: preserve-3d;
-            animation: xAnimation 2s cubic-bezier(0, .91, .19, 1.31);
-          }
+          .error-sign {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            border: 5px solid var(--errorColor);
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            perspective: 100px;
 
-          .first {
-            transform: rotate(40deg);
-          }
-
-          .second {
-            transform: rotate(-40deg);
-          }
-
-          // ANCHOR sign animation
-          @keyframes signAnimation {
-            from {
-              transform: rotateX(90deg) translateY(20px);
+            .first,
+            .second {
+              position: absolute;
+              width: 5px;
+              height: 50px;
+              background-color: var(--errorColor);
+              border-radius: 50px;
             }
 
-            to {
-              transform: rotateX(0deg) translateY(0px);
+            .first {
+              transform: rotate(40deg);
+            }
+
+            .second {
+              transform: rotate(-40deg);
             }
           }
 
-          @keyframes xAnimation {
-            from {
-              opacity: 0;
-            }
-
-            to {
-              opacity: 1;
-
-            }
-          }
-        }
-
-        .heading {
-          font-weight: bold;
-          margin: var(--padding-bottom) 0 1rem;
-        }
-
-        .confirm-message {
-          color: var(--sec-font-color);
-          font-size: var(--font-size-md);
-          margin-bottom: 2rem;
-        }
-
-        .actions-btn {
-          display: flex;
-          gap: 30px;
-
-          .btn {
-            color: var(--font-color);
-            text-transform: capitalize;
+          .heading {
             font-weight: bold;
+            margin: var(--padding-bottom) 0 1rem;
+          }
+
+          .confirm-message {
+            color: var(--sec-font-color);
             font-size: var(--font-size-md);
-            border-radius: var(--btn-border-radius);
-            padding: var(--btn-padding);
-            transition: var(--transition);
+            margin-bottom: 2rem;
+          }
 
-            &:hover {
-              filter: var(--btn-bgHover);
+          .actions-btn {
+            display: flex;
+            gap: 30px;
+
+            .btn {
+              color: var(--font-color);
+              text-transform: capitalize;
+              font-weight: bold;
+              font-size: var(--font-size-md);
+              border-radius: var(--btn-border-radius);
+              padding: var(--btn-padding);
+              transition: var(--transition);
+
+              &:hover {
+                filter: var(--btn-bgHover);
+              }
             }
-          }
 
-          .confirm {
-            background-color: var(--errorColor);
-            color: var(--btn-color);
-          }
+            .confirm {
+              background-color: var(--errorColor);
+              color: var(--btn-color);
+            }
 
-          .discard {
-            background-color: var(--background-color);
+            .discard {
+              background-color: var(--background-color);
+            }
           }
         }
 
@@ -1360,11 +1343,11 @@ input[type=number] {
 
       @keyframes containerAnimation {
         from {
-          transform: rotateX(90deg)
+          transform: rotateX(180deg) translateY(-100%);
         }
 
         to {
-          transform: rotateX(0deg)
+          transform: rotateX(0deg) translateY(0%);
         }
       }
     }
@@ -1414,29 +1397,32 @@ input[type=number] {
           width: 350px;
           height: 280px;
 
-          .error-sign {
-            width: 60px;
-            height: 60px;
+          .alert-face {
 
-            .first,
-            .second {
-              height: 30px;
+            .error-sign {
+              width: 60px;
+              height: 60px;
+
+              .first,
+              .second {
+                height: 30px;
+              }
             }
-          }
 
-          .heading {
-            font-size: 16px;
-          }
+            .heading {
+              font-size: 16px;
+            }
 
-          .confirm-message {
-            font-size: var(--font-size-sm);
-          }
-
-          .actions-btn {
-            gap: 10px;
-
-            .btn {
+            .confirm-message {
               font-size: var(--font-size-sm);
+            }
+
+            .actions-btn {
+              gap: 10px;
+
+              .btn {
+                font-size: var(--font-size-sm);
+              }
             }
           }
         }
