@@ -48,9 +48,12 @@ function CurrentInvoice() {
     return total;
   });
 
-  const finalPriceReduce = finalPriceMap.reduce((acc, item) => {
-    return acc + item;
-  });
+  const finalPriceReduce =
+    finalPriceMap.length > 0
+      ? finalPriceMap.reduce((acc, item) => {
+          return acc + item;
+        })
+      : "";
 
   useEffect(() => {
     if (isEdit || isAlert) {
@@ -238,23 +241,28 @@ function CurrentInvoice() {
                       </tr>
                     </thead>
                     <tbody>
-                      {itemList.map((item) => {
-                        const { itemName, price, qty, itemListID } = item;
-                        let total = (qty * price).toFixed(2);
-                        return (
-                          <tr key={itemListID}>
-                            <th scope="row">{itemName || "N/A"}</th>
-                            <td>{qty}</td>
-                            <td>{price}</td>
-                            <td>${total}</td>
-                          </tr>
-                        );
-                      })}
+                      {itemList &&
+                        itemList.map((item) => {
+                          const { itemName, price, qty, itemListID } = item;
+                          let total = (qty * price).toFixed(2);
+                          return (
+                            <tr key={itemListID}>
+                              <th scope="row">{itemName || "N/A"}</th>
+                              <td>{qty}</td>
+                              <td>{price}</td>
+                              <td>${total}</td>
+                            </tr>
+                          );
+                        })}
                     </tbody>
                     <tfoot>
                       <tr>
                         <td colSpan="3">grand total</td>
-                        <td>${Math.round(finalPriceReduce)}</td>
+                        <td>
+                          {finalPriceReduce
+                            ? `$${Math.round(finalPriceReduce)}`
+                            : "N/A"}
+                        </td>
                       </tr>
                     </tfoot>
                   </table>
