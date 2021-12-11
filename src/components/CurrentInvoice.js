@@ -261,7 +261,7 @@ function CurrentInvoice() {
                         <td>
                           {finalPriceReduce
                             ? `$${Math.round(finalPriceReduce)}`
-                            : "N/A"}
+                            : "$0"}
                         </td>
                       </tr>
                     </tfoot>
