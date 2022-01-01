@@ -1,8 +1,9 @@
-import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { useGlobalContext } from "./AppProvider";
 
 function Alert({ id }) {
   const { dispatch, setIsAlert } = useGlobalContext();
+  const history = useHistory();
 
   return (
     <section className="alert">
@@ -18,10 +19,11 @@ function Alert({ id }) {
             cannot be undone.
           </p>
           <div className="actions-btn">
-            <Link
+            <button
               className="confirm btn"
-              to="/"
               onClick={() => {
+                history.push("/");
+
                 dispatch({
                   type: "DELETE_INVOICE",
                   payload: id,
@@ -30,7 +32,7 @@ function Alert({ id }) {
               }}
             >
               delete
-            </Link>
+            </button>
             <button className="discard btn" onClick={() => setIsAlert(false)}>
               cancel
             </button>

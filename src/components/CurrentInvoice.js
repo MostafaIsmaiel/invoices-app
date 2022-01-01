@@ -113,7 +113,6 @@ function CurrentInvoice() {
 
                     <button
                       className="btn delete"
-                      to="/"
                       onClick={() => setIsAlert(true)}
                     >
                       delete
