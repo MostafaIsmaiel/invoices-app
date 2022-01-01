@@ -3,6 +3,7 @@ import { GoCalendar } from "react-icons/go";
 import { BsBasket } from "react-icons/bs";
 import DatePicker from "react-date-picker";
 import { useGlobalContext } from "./AppProvider";
+import React from "react";
 
 function AddInvoice() {
   const {
@@ -101,26 +102,8 @@ function AddInvoice() {
     setItemsList(newItemsList);
   };
 
-  // const validateForm = () => {
-  //   const inputs = document.querySelectorAll(".form .form-control .input");
-  //   inputs.forEach((input) => {
-  //     const node = document.createElement("p");
-  //     const text = document.createTextNode(`${input.name} is a required field`);
-  //     node.append(text);
-  //     node.classList.add("err-message");
-  //     input.onblur = function () {
-  //       if (input.value === "") {
-  //         if (input.parentElement.lastChild !== node)
-  //           input.parentElement.append(node);
-  //       } else {
-  //         node.remove();
-  //       }
-  //     };
-  //   });
-  // };
-
   return (
-    <article className="addInvoice-container">
+    <section className="addInvoice-container">
       <div className="container">
         <div className="addNewInvoice">
           <div className="row justify-content-center">
@@ -550,7 +533,7 @@ function AddInvoice() {
           </div>
         </div>
       </div>
-    </article>
+    </section>
   );
 }
 

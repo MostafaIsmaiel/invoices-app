@@ -53,7 +53,7 @@ body.light {
 /* width */
 ::-webkit-scrollbar {
   width: 10px;
-
+  height: 2px;
 }
 
 /* Track */
@@ -1157,6 +1157,7 @@ input[type=number] {
 
           .description-detail {
             color: var(--sec-font-color);
+            word-break: break-all;
           }
         }
 
@@ -1175,6 +1176,7 @@ input[type=number] {
             font-size: var(--font-size-md);
             color: var(--sec-font-color);
             padding-bottom: var(--padding-bottom);
+            word-break: break-all;
 
             p {
               min-width: 100px;
@@ -1199,11 +1201,11 @@ input[type=number] {
           padding: var(--padding-bottom);
           background-color: var(--background-color);
           border-radius: var(--border-radius);
+          overflow-x: auto;
 
           .items-table {
             color: var(--font-color);
             border: none;
-            overflow-x: auto;
 
             td,
             th,
@@ -1428,7 +1430,5 @@ input[type=number] {
         }
       }
     }
-
   }
-
 }

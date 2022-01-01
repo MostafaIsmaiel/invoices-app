@@ -50,6 +50,7 @@ body.light {
 /* width */
 ::-webkit-scrollbar {
   width: 10px;
+  height: 2px;
 }
 
 /* Track */
@@ -877,6 +878,7 @@ input[type=number] {
 }
 .main-container .currentInvoice .currentInvoice-container .currentInvoice-details .heading-container .description-detail {
   color: var(--sec-font-color);
+  word-break: break-all;
 }
 .main-container .currentInvoice .currentInvoice-container .currentInvoice-details .box {
   margin: 10px 0 30px;
@@ -892,6 +894,7 @@ input[type=number] {
   font-size: var(--font-size-md);
   color: var(--sec-font-color);
   padding-bottom: var(--padding-bottom);
+  word-break: break-all;
 }
 .main-container .currentInvoice .currentInvoice-container .currentInvoice-details .box .box-inner p {
   min-width: 100px;
@@ -908,11 +911,11 @@ input[type=number] {
   padding: var(--padding-bottom);
   background-color: var(--background-color);
   border-radius: var(--border-radius);
+  overflow-x: auto;
 }
 .main-container .currentInvoice .currentInvoice-container .currentInvoice-details .itemsTable-container .items-table {
   color: var(--font-color);
   border: none;
-  overflow-x: auto;
 }
 .main-container .currentInvoice .currentInvoice-container .currentInvoice-details .itemsTable-container .items-table td,
 .main-container .currentInvoice .currentInvoice-container .currentInvoice-details .itemsTable-container .items-table th,

@@ -6,7 +6,6 @@ import { Link } from "react-router-dom";
 import Alert from "./Alert";
 import { useEffect } from "react";
 
-// import { date } from "yup";
 function CurrentInvoice() {
   const {
     invoices,
