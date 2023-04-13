@@ -1,4 +1,5 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
+import autoAnimate from "@formkit/auto-animate";
 import { BiChevronRight } from "react-icons/bi";
 import { useGlobalContext } from "./AppProvider";
 import { Link } from "react-router-dom";
@@ -6,6 +7,8 @@ import { Link } from "react-router-dom";
 function Invoices() {
   const { invoices, filterByStatus, final, setFinal, paymentDue } =
     useGlobalContext();
+
+  const parent = useRef(null);
 
   useEffect(() => {
     const keys = Object.keys(filterByStatus);
@@ -31,8 +34,15 @@ function Invoices() {
     finalResult();
   }, [filterByStatus, invoices, setFinal]);
 
+  useEffect(() => {
+    parent.current && autoAnimate(parent.current);
+  }, [parent]);
+
   return (
-    <section className="invoices-container col-lg-8 m-auto mt-5 text-capitalize">
+    <section
+      className="invoices-container col-lg-8 m-auto mt-5 text-capitalize"
+      ref={parent}
+    >
       {final.map((invoice) => {
         const { invoiceID, clientName, itemList, date, status, paymentTerms } =
           invoice;

@@ -1,10 +1,12 @@
+import { useEffect, useRef } from "react";
 import { useParams } from "react-router";
-import { useGlobalContext } from "./AppProvider";
-import AddInvoice from "./AddInvoice";
 import { BiChevronLeft } from "react-icons/bi";
 import { Link } from "react-router-dom";
+import autoAnimate from "@formkit/auto-animate";
+
+import { useGlobalContext } from "./AppProvider";
+import AddInvoice from "./AddInvoice";
 import Alert from "./Alert";
-import { useEffect } from "react";
 
 function CurrentInvoice() {
   const {
@@ -22,7 +24,7 @@ function CurrentInvoice() {
   } = useGlobalContext();
   const param = useParams();
   const invoice = invoices.find((invoice) => invoice.invoiceID === param.id);
-
+  const parent = useRef(null);
   const {
     invoiceID,
     streetFrom,
@@ -61,6 +63,10 @@ function CurrentInvoice() {
       document.body.style.overflow = "auto";
     }
   }, [isAlert, isEdit]);
+
+  useEffect(() => {
+    parent.current && autoAnimate(parent.current);
+  }, [parent]);
 
   return (
     <article className="currentInvoice w-100">
@@ -270,7 +276,7 @@ function CurrentInvoice() {
           </div>
         </div>
       </div>
-      {isEdit && <AddInvoice />}
+      <div ref={parent}>{isEdit && <AddInvoice />}</div>
       {isAlert && <Alert id={invoiceID} />}
     </article>
   );

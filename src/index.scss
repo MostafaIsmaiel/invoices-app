@@ -1,21 +1,20 @@
-@import url('https://fonts.googleapis.com/css2?family=Spartan:wght@100;200;300;400;500;600;700;800;900&display=swap');
-
+@import url("https://fonts.googleapis.com/css2?family=Spartan:wght@100;200;300;400;500;600;700;800;900&display=swap");
 
 :root {
   --background-color: #141625;
   --items-background-color: #232c43;
   --font-color: #eae3dc;
-  --sec-font-color: hsla(0, 0%, 100%, .6);
+  --sec-font-color: hsla(0, 0%, 100%, 0.6);
   --btn-bgColor: #7c5dfa;
   --btn-bgHover: brightness(1.1);
-  --overLayBg: rgba(20, 22, 37, .95);
-  --draft-BgColor: #3B3F58;
+  --overLayBg: rgba(20, 22, 37, 0.95);
+  --draft-BgColor: #3b3f58;
   --draft-color: #eae3dc;
-  --pending-BgColor: rgba(236, 141, 34, .1);
+  --pending-BgColor: rgba(236, 141, 34, 0.1);
   --pending-color: #ec8d22;
-  --paid-BgColor: rgba(105, 214, 159, .1);
+  --paid-BgColor: rgba(105, 214, 159, 0.1);
   --paid-color: #69d69f;
-  --errorColor: #E85757;
+  --errorColor: #e85757;
   --btn-color: #eae3dc;
   --transition: all 0.2s ease-in-out;
   --box-shadow: 5px 0px 15px 0px rgb(0, 0, 0, 0.3);
@@ -28,7 +27,7 @@
   --btn-padding: 0.75rem 1rem;
   --main-header-width: 80px;
   --small-header-width: 60px;
-  --border-bottom: 1px solid hsla(0, 0%, 100%, .06);
+  --border-bottom: 1px solid hsla(0, 0%, 100%, 0.06);
   --font-size-lg: 24px;
   --font-size-md: 13px;
   --font-size-sm: 11px;
@@ -41,7 +40,7 @@ body.light {
   --sec-font-color: #1a1a1ace;
   --btn-bgColor: hsl(25, 98%, 40%);
   --overLayBg: hsla(0, 5%, 81%, 0.9);
-  --draft-BgColor: #D6D7DB;
+  --draft-BgColor: #d6d7db;
   --draft-color: #1a1a1a;
 }
 
@@ -64,14 +63,13 @@ body.light {
 /* Handle */
 ::-webkit-scrollbar-thumb {
   background: #dddddd;
-  border-radius: 10px
+  border-radius: 10px;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: #999999;
 }
-
 
 // Hide arrows in input type number
 
@@ -81,8 +79,8 @@ input::-webkit-inner-spin-button {
   margin: 0;
 }
 
-input[type=number] {
-  -moz-appearance: textfield;
+input[type="number"] {
+  appearance: textfield;
 }
 
 // ANCHOR Main container
@@ -91,7 +89,6 @@ input[type=number] {
   background-color: var(--background-color);
   width: 100%;
   min-height: 100vh;
-
 
   // ANCHOR Aside
   .aside {
@@ -118,7 +115,6 @@ input[type=number] {
     }
 
     .logo {
-
       a {
         img {
           width: var(--main-header-width);
@@ -127,7 +123,6 @@ input[type=number] {
     }
 
     .setting {
-
       .theme {
         width: var(--main-header-width);
         padding: 1rem 0;
@@ -160,8 +155,7 @@ input[type=number] {
     }
   }
 
-  @media (max-width:990px) {
-
+  @media (max-width: 990px) {
     // ANCHOR Aside 990px
     .aside {
       height: var(--small-header-width);
@@ -203,9 +197,9 @@ input[type=number] {
   .app-container {
     width: 100%;
     padding: var(--main-padding);
+    animation: fadeIn 0.3s ease-in-out;
 
     .page {
-
       // ANCHOR Add new invoice hint
       .invoice-hint {
         height: 30vh;
@@ -230,11 +224,10 @@ input[type=number] {
 
           &:hover {
             filter: drop-shadow(10px 10px 10px var(--background-color));
-
           }
 
           svg {
-            font-size: calc(var(--font-size-lg) + .75rem);
+            font-size: calc(var(--font-size-lg) + 0.75rem);
           }
 
           h1 {
@@ -244,7 +237,7 @@ input[type=number] {
         }
       }
 
-      @media (max-width:992px) {
+      @media (max-width: 992px) {
         .invoice-hint {
           padding: var(--btn-padding);
 
@@ -319,7 +312,7 @@ input[type=number] {
             border: none;
 
             &:hover {
-              color: var(--sec-font-color)
+              color: var(--sec-font-color);
             }
           }
 
@@ -357,7 +350,7 @@ input[type=number] {
               input {
                 display: none;
 
-                &:checked+label::before {
+                &:checked + label::before {
                   background-color: var(--btn-bgColor);
                 }
               }
@@ -388,7 +381,6 @@ input[type=number] {
                 &::after {
                   border: 2px solid var(--btn-bgColor);
                   opacity: 0;
-
                 }
 
                 &:hover {
@@ -449,13 +441,11 @@ input[type=number] {
               font-weight: bold;
             }
           }
-
         }
       }
 
       // ANCHOR invoices container
       .invoices-container {
-
         .invoice {
           width: 100%;
           padding: 20px;
@@ -483,7 +473,6 @@ input[type=number] {
             border: 2px solid var(--btn-bgColor);
             opacity: 0;
             transition: var(--transition);
-
           }
 
           &:hover {
@@ -586,14 +575,12 @@ input[type=number] {
             }
           }
         }
-
       }
     }
 
-    @media (max-width:768px) {
+    @media (max-width: 768px) {
       .page {
-
-        // ANCHOR header 768px 
+        // ANCHOR header 768px
         .header {
           padding-bottom: 0;
           flex-direction: column;
@@ -624,7 +611,6 @@ input[type=number] {
 
         .invoices-container {
           .invoice {
-
             .invoice-info,
             .invoice-status {
               font-size: var(--font-size-sm);
@@ -659,13 +645,11 @@ input[type=number] {
         }
       }
     }
-
   }
 
   // ANCHOR Add new invoice
 
   .addInvoice-container {
-
     width: 100%;
     height: 100vh;
     position: fixed;
@@ -709,14 +693,12 @@ input[type=number] {
 
       // ANCHOR Form
       .form {
-
         .form-section {
           .form-headers {
             font-size: 18px;
             font-weight: bold;
             color: var(--btn-bgColor);
             margin-bottom: var(--margin-bottom);
-
           }
 
           .form-control {
@@ -762,7 +744,6 @@ input[type=number] {
               text-transform: capitalize;
             }
 
-
             .total {
               color: var(--font-color);
               margin-bottom: 0;
@@ -803,10 +784,9 @@ input[type=number] {
               input,
               span {
                 color: var(--font-color);
-                outline: none
+                outline: none;
               }
             }
-
           }
 
           .react-date-picker__calendar {
@@ -862,7 +842,6 @@ input[type=number] {
               }
             }
           }
-
         }
 
         // ANCHOR Item list
@@ -925,17 +904,14 @@ input[type=number] {
         }
       }
     }
-
   }
 
-  @media (max-width:992px) {
-
+  @media (max-width: 992px) {
     // ANCHOR Add new invoice 992px
     .addInvoice-container {
       .addNewInvoice {
         .form {
           .form-control {
-
             .input,
             .select {
               font-size: var(--font-size-sm);
@@ -973,19 +949,15 @@ input[type=number] {
               font-size: var(--font-size-md);
               white-space: nowrap;
             }
-
-
           }
         }
       }
     }
   }
 
-  @media (max-width:768px) {
-
+  @media (max-width: 768px) {
     // ANCHOR Form 768px
     .form {
-
       .form-btn-handelers {
         text-align: center;
 
@@ -1000,9 +972,8 @@ input[type=number] {
   // ANCHOR Current invoice
   .currentInvoice {
     padding: var(--main-padding);
-
+    animation: fadeIn 0.3s ease-in-out;
     .currentInvoice-container {
-
       // ANCHOR Current invoice header
       .header {
         margin-bottom: var(--margin-bottom);
@@ -1097,7 +1068,6 @@ input[type=number] {
 
             span {
               margin-right: 20px;
-
             }
           }
 
@@ -1340,7 +1310,6 @@ input[type=number] {
             }
           }
         }
-
       }
 
       @keyframes containerAnimation {
@@ -1356,7 +1325,6 @@ input[type=number] {
   }
 
   @media (max-width: 992px) {
-
     // ANCHOR current invoice 768px
     .currentInvoice {
       .currentInvoice-container {
@@ -1376,10 +1344,8 @@ input[type=number] {
 
         // ANCHOR current invoice details 992px
         .currentInvoice-details {
-
           // ANCHOR items table 992px
           .itemsTable-container {
-
             thead,
             tfoot {
               font-size: var(--font-size-md);
@@ -1400,7 +1366,6 @@ input[type=number] {
           height: 280px;
 
           .alert-face {
-
             .error-sign {
               width: 60px;
               height: 60px;
@@ -1430,5 +1395,14 @@ input[type=number] {
         }
       }
     }
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
   }
 }
